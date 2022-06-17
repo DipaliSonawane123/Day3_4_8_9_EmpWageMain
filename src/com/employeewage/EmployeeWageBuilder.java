@@ -15,10 +15,13 @@ public class EmployeeWageBuilder {
         if (empCheck == IS_fULL_tIME) {
             System.out.println("Employee is present");
         empHours=8;
-        } else {
-            System.out.println("Employee is absent");
-        empWage=empHours*EMP_RATE_PER_HOUR;
-            System.out.println("The daliy wage of Empolyee is" + empWage);
         }
+        else {
+            System.out.println("Employee is absent");
+            empHours=4;
+
+        }
+        empWage=empHours*EMP_RATE_PER_HOUR;
+        System.out.println("The daliy wage of Empolyee is" + empWage);
     }
 }
