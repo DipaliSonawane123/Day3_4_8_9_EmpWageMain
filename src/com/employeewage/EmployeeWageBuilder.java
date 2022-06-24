@@ -14,6 +14,7 @@ public class EmployeeWageBuilder {
         int Totalemphrs = 0;
         System.out.println("Welcome to Employee Wage Builder");
 
+        int Total_emp_wage = 0;
         while (Totalemphrs <= EMP_TOTAL_HOURS && totalworkingdays <= Total_no_Working_Day) {
             totalworkingdays++;
             Random random = new Random();
@@ -23,30 +24,34 @@ public class EmployeeWageBuilder {
             switch (empCheck) {
                 case FULL_TIME_WORKER:
                     empHours = 8;
-                    System.out.println("Employee is present");
+
                     break;
                 case PART_TIME_WORKER:
                     empHours = 4;
-                    System.out.println("Employee is present");
+
                     break;
                 default:
                     empHours = 0;
-                    System.out.println("Employee is absent");
             }
             Totalemphrs = Totalemphrs + empHours;
             empWage = empHours * EMP_RATE_PER_HOUR;
-            int Total_emp_wage = empWage + Totalemphrs;
+            System.out.println("Daily emp wage is"+empWage);
+            Total_emp_wage = empWage + Totalemphrs;
             Total_emp_wage = Total_emp_wage * Total_no_Working_Day;
-            System.out.println("The daily wage of Employee of " + company + " is" + empWage);
-            System.out.println("The Monthly Wage of Employee of " + company + " is" + Total_emp_wage);
+
 
         }
+        System.out.println("The Monthly Wage of Employee of " + company + " is" + Total_emp_wage);
     }
 
     public static void main(String[] args) {
+        System.out.println("*********************************");
         computeEmpWage("Bridgelabzs", 20, 20, 200);
+        System.out.println("*********************************");
         computeEmpWage("D Mart", 30, 30, 300);
+        System.out.println("*********************************");
         computeEmpWage("HDFC Bank", 50, 20, 220);
+        System.out.println("*********************************");
 
     }
 }
