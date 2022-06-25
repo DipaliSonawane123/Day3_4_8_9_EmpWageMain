@@ -1,33 +1,32 @@
 /*
-    Ability to manage EmployeeWage of multiple
-     companies - Note: Refactor to have one
-     EmpWageBuilder to manage for Wage
-     for multiple Company
-     - Create CompanyEmpWage class and let
-     EmpWageBuilder has array of many
-    CompanyEmpWage Object.
+Refactor to use ArrayList instead of array.
+The ArrayList class is a resizable array, which can be found in the java. util package.
+The difference between a built-in array and an ArrayList in Java, is that the size of an array cannot be modified (if you want to add or remove elements to/from an array, you have to create a new one).
+An Interface in Java programming language is defined as an abstract type used to specify the behavior of a class.
+An interface in Java is a blueprint of a class. A Java interface contains static constants and abstract methods. The interface in Java is a mechanism to achieve abstraction.
+Data abstraction is the process of hiding certain details and showing only essential information to the user.
 */
 package com.employeewage;
 import java.util.Random;
+import java.util.ArrayList; //importing ArrayList class
 public class EmpWageBuilder  implements IEmpWageBuilder {
     // instance variables
     int noOfCompanies, index;
-    companyEmpWage[] companies; //declaring array
+    ArrayList<companyEmpWage> companies; //ArrayList declaration
+  // contructor for EmpWageBuilder  class
+    public EmpWageBuilder(){
+      companies=new ArrayList<>();
+  }
 
-    //Constructor for the class EmpWageBuilder
-    public EmpWageBuilder(int noOfCompanies) {
-        super();
-        this.noOfCompanies = noOfCompanies;
-        companies = new companyEmpWage[noOfCompanies];
-        index = 0;
-    }
+
     //Assigning to the array
     public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs) {
-        companies[index++] = new companyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+        companyEmpWage company = new companyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
+        companies.add(company);
     }
-    //Computation of company wage
+    //print company wage
     int companyWage(companyEmpWage companyEmpWage) {
-        System.out.println("* Computation of total wage of " + companyEmpWage.COMPANY_NAME + " employee:");
+        System.out.println("* Total wage of " + companyEmpWage.COMPANY_NAME + " employee:");
         int workingHrs, totalWage = 0;
         for (int day = 1, totalWorkingHrs = 0; day <= companyEmpWage.MAX_WORKING_DAYS
                 && totalWorkingHrs <= companyEmpWage.MAX_WORKING_HRS; day++, totalWorkingHrs += workingHrs) {
@@ -65,7 +64,7 @@ public class EmpWageBuilder  implements IEmpWageBuilder {
     public static void main(String args[]) {
         //Welcome message
         System.out.println("Welcome to Employee Wage Builder. \n");
-        EmpWageBuilder emp = new EmpWageBuilder(3); //creating an object and declaring number of companies = 3
+        EmpWageBuilder emp = new EmpWageBuilder(); //creating an object and declaring number of companies = 3
         emp.addCompany("Bridgeabz", 20, 20, 100);
         emp.addCompany("TATA", 34, 23, 130);
         emp.addCompany("BAJAJ", 10, 15, 99);
