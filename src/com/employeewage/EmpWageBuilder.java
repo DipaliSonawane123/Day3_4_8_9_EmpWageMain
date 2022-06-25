@@ -9,19 +9,20 @@
 */
 package com.employeewage;
 import java.util.Random;
-public class EmpWageBuilder {
+public class EmpWageBuilder  implements IEmpWageBuilder {
     // instance variables
     int noOfCompanies, index;
     companyEmpWage[] companies; //declaring array
 
     //Constructor for the class EmpWageBuilder
     public EmpWageBuilder(int noOfCompanies) {
+        super();
         this.noOfCompanies = noOfCompanies;
         companies = new companyEmpWage[noOfCompanies];
         index = 0;
     }
     //Assigning to the array
-    void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs) {
+    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs) {
         companies[index++] = new companyEmpWage(companyName, wagePerHr, maxWorkingDays, maxWorkingHrs);
     }
     //Computation of company wage
@@ -52,7 +53,7 @@ public class EmpWageBuilder {
                 return 0; //Absent
         }
     }
-    void companyWage() {
+    public void companyWage() {
         for (companyEmpWage company : companies) //for-each loop
         {
             int totalWage = companyWage(company);
@@ -71,4 +72,3 @@ public class EmpWageBuilder {
         emp.companyWage();
     }
 }
-

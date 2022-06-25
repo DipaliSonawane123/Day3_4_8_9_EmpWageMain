@@ -1,5 +1,8 @@
 package com.employeewage;
-
+interface IEmpWageBuilder {
+    public void addCompany(String companyName, int wagePerHr, int maxWorkingDays, int maxWorkingHrs);
+    public void companyWage();
+}
 public class companyEmpWage {
     // declaring instance variables
     final String COMPANY_NAME;
